@@ -4,18 +4,33 @@
 
 /* Backgrounds will cover all the section
 * --------------------------------------- */
-#section0,
-#section1,
-#section2,
-#section3{
+#home,
+#into,
+#skills,
+#experience,
+#education,
+#contact{
 	background-size: cover;
 	background-attachment: fixed;
 }
 
 /* Defining each sectino background and styles
 * --------------------------------------- */
-#section0{
-	background-image: url(imgs/bg1.jpg);
+#home{
+	background-image: url(../images/bg1.jpg);
+	text-align: center;
+}
+#home h1{
+	font-family: 'Trirong', serif;
+	font-size: 3em;
+	color: white;
+	margin: 0.3em;
+}
+#home h3{
+	font-family: 'Russo One', sans-serif;
+	color: white;
+	font-size: 1.3em;
+	font-weight: lighter;
 }
 #section0 h1{
 	top: 50%;
