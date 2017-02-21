@@ -32,14 +32,25 @@
 </head>
 <body>
 
-<div id="fullpage">
-	<div class="section" id="home">
+<nav>
+	<ul>
+		<li>Home</li>
+		<li>Introduction</li>
+		<li>Skills</li>
+		<li>Experience</li>
+		<li>Education</li>
+		<li>Contac me</li>
+	</ul>
+</nav>
+
+<article id="fullpage">
+	<section class="section" id="home">
 		<img src="images/profile.jpg" width="200"/>
 		<h1> Hi I'm Guilherme Maia</h1>
 		<h3>Software Developer and SAP ABAP Consultant</h3>
-	</div>
+	</section>
 
-	<div class="section" id="intro">
+	<section class="section" id="intro">
 		<h2>Introduction</h2>
 		<p>
 			I'm an ambitious, tenacious, and well-accomplished IT professional with 6+ years of experience in IT Industry. My expertise is object orientation and web development. I'm armed with broad-based background and skills in the areas of providing appropriate solution to every task needed. Determined to implement earned skills and knowledge for the rapid growth of the prospective organization by working effectively and consistently. Motivated, alert to detail, communication with technical and business professionals, self-taught, share ideas, and opened-mind to new ways of working. 
@@ -47,13 +58,55 @@
 		<p>
 			Beyond this I'm an amateur tennis player interested for technology, cars, motorcycles, airplanes, food, beer and landscapes.
 		</p>
-	</div>
+	</section>
 
-	<div class="section" id="skills">
+	<section class="section" id="skills">
 		<h2>Skills</h2>
-	</div>
 
-	<div class="section" id="experience">
+		<div class="skill">
+			<label>Skill</label>
+			<div class="progressbar"></div>
+			<label>Nível</label> <br />
+		</div>
+		
+		<div class="skill">
+			<label>Skill</label>
+			<div class="progressbar"></div>
+			<label>Nível</label> <br />
+		</div>
+
+		<div class="skill">
+			<label>Skill</label>
+			<div class="progressbar"></div>
+			<label>Nível</label> <br />
+		</div>
+
+		<div class="skill">
+			<label>Skill</label>
+			<div class="progressbar"></div>
+			<label>Nível</label> <br />
+		</div>
+
+		<div class="skill">
+			<label>Skill</label>
+			<div class="progressbar"></div>
+			<label>Nível</label> <br />
+		</div>
+
+		<div class="skill">
+			<label>Skill</label>
+			<div class="progressbar"></div>
+			<label>Nível</label> <br />
+		</div>
+
+		<div class="skill">
+			<label>Skill</label>
+			<div class="progressbar"></div>
+			<label>Nível</label> <br />
+		</div>	
+	</section>
+
+	<section class="section" id="experience">
 		<h2>Experience</h2>
 
 		<h3>Capgemini</h3>
@@ -106,10 +159,10 @@
 			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 		</p>
 
-	</div>
+	</section>
 
 
-	<div class="section" id="education">
+	<section class="section" id="education">
 		<h2>Education</h2>
 
 		<h3>Cornerstone International Community College of Canada</h3>
@@ -141,11 +194,13 @@
 			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 		</p>
-	</div>
+	</section>
 
-	<div class="section" id="contact">
+	<section class="section" id="contact">
 		<h2>Contact me</h2>
-		<div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="pt_BR" data-type="horizontal" data-theme="dark" data-vanity="guilhermepmaia"><a class="LI-simple-link" href='https://ca.linkedin.com/in/guilhermepmaia?trk=profile-badge'>Guilherme Maia</a></div>
+		<div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="guilhermepmaia">
+			<a class="LI-simple-link" href='https://ca.linkedin.com/in/guilhermepmaia?trk=profile-badge'>Guilherme Maia</a>
+		</div>
 		<form>
 			<label>Name</label>
 			<input type="text" name="name" /> <br />
@@ -157,11 +212,13 @@
 			<input type="text" name="subject" /> <br />
 
 			<label>Message</label>
-			<textarea name="message"></textarea> 
-		</form>
-	</div>
+			<textarea name="message"></textarea> <br />
 
-</div>
+			<input type="submit" />
+		</form>
+	</section>
+
+</article>
 
 </body>
 </html>
