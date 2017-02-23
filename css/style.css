@@ -1,7 +1,8 @@
-/* GENERAL CSS */
 
 
-
+article#main{
+	margin-top: 70px !important;
+}
 /* Backgrounds will cover all the section
 * --------------------------------------- */
 #home,
@@ -17,7 +18,7 @@
 /* Defining each sectino background and styles
 * --------------------------------------- */
 #home{
-	background-image: url(../images/bg1.jpg);
+	background-image: url(../images/bg2.jpg);
 	text-align: center;
 }
 #home h1{
@@ -32,7 +33,7 @@
 	font-size: 1.3em;
 	font-weight: lighter;
 }
-#section0 h1{
+#intro h2{
 	top: 50%;
 	transform: translateY(-50%);
 	position: relative;
