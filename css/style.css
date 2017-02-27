@@ -2,7 +2,7 @@ html, body {
     height: 100%;
 }
 .cover.full-window{
-	background-image: url(../images/bg2.jpg);	
+	background-image: url(../images/bg1.jpg);	
 	background-size: cover;
 	background-attachment: fixed;
     width: 100%;
@@ -23,25 +23,46 @@ html, body {
 	vertical-align: middle;
 	padding-top: 50px;
 }
+section{
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
 .contactBackground{
-	background-image: url(../images/bg3.jpg);	
-	background-size: cover;
-	background-attachment: fixed;
-	z-index: -1;
-    background-position: center;
+	background-image: url(../images/bg2.jpg);	
+	background-size: auto;
+    background-attachment: fixed;
+    background-position: bottom;
     background-repeat: no-repeat;
+	z-index: -1;
     -webkit-transition: opacity .4s;
     -o-transition: opacity .4s;
     transition: opacity .4s;
     display: block;
-    height: 420px;
+    height: 430px;
     width: 100%;
     position: absolute;
     opacity: .7;
     left:0;
 }
+.contactBackgroundCopy{
+    z-index: -2;
+    display: table;
+    height: 430px;
+    width: 100%;
+    position: absolute;
+    left:0;
+    background-color: #000;
+}
+#contact{
+    margin-bottom: 0;
+}
+#contact h1, #contact form, #contact legend,
+#contact input, #contact textarea{
+    opacity: 1;
+    color: #222222;
+}
+
 .footer{
-	background-color: hsl(255, 20%);
 	width: 100%;
     height: 50px;
     line-height: 50px;
