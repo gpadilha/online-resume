@@ -41,25 +41,13 @@ section{
     height: 430px;
     width: 100%;
     position: absolute;
-    opacity: .7;
     left:0;
-}
-.contactBackgroundCopy{
-    z-index: -2;
-    display: table;
-    height: 430px;
-    width: 100%;
-    position: absolute;
-    left:0;
-    background-color: #000;
 }
 #contact{
     margin-bottom: 0;
 }
-#contact h1, #contact form, #contact legend,
-#contact input, #contact textarea{
-    opacity: 1;
-    color: #222222;
+#contact h1, #contact form, #contact legend{
+    color: #fff;
 }
 
 .footer{
@@ -71,4 +59,7 @@ section{
 }
 footer p{
 	margin-bottom: 0;
+}
+div.socialIcons a{
+	text-decoration: none;
 }
