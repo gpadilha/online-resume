@@ -28,25 +28,24 @@
 	<!-- Bootstrap -->
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>	
 	<script type="text/javascript">
-		function sendMail(e){
-			e.preventDefault();
-			$.ajax({type: 'POST',
-					url: 'http://myciccc.ca/process_for.php', 
-					data: $("#mailForm").serialize(),
-					success: function(message, result, jqXHR){
-						$("#formResult").append(message);
-						$("#formResult").addClass("alert-info");
-						$("#formResult").removeClass("hidden");
-						$("#formSubmit").addClass("hidden");
-						$("#loading").addClass("hidden");
-					}			
+
+		$(document).ready(function(){
+			$("#formSubmit").click(function(btn){
+				btn.preventDefault();
+				$.ajax({type: 'POST',
+						url: 'http://myciccc.ca/process_form.php', 
+						data: $("#mailForm").serialize(),
+						success: function(message, result, jqXHR){
+							$("#formResult").html(getDivMessage(message, "info"));
+							$("#formSubmit").addClass("hidden");
+							$("#loading").addClass("hidden");
+						}			
+				});
 			});			
-		}
+		});	
 
 		$(document).ajaxError(function(){
-			$("#formResult").append("Failed to send your requisition.");
-			$("#formResult").addClass("alert-danger");
-			$("#formResult").removeClass("hidden");
+			$("#formResult").html(getDivMessage("Failed to send your requisition", "danger"));
 			$("#formSubmit").addClass("hidden");
 			$("#loading").addClass("hidden");
 		});
@@ -55,6 +54,29 @@
 			$("#mailForm").addClass("hidden");
 			$("#loading").removeClass("hidden");
 		});	
+
+
+		function getDivMessage(message, type){
+			if (type == "") {
+				type = info;
+			}
+			var divMessage = 
+				 "<div class='alert alert-dismissible alert-"+type+"' role='alert'>" +
+					"<button type='button' class='close' data-dismiss='alert' aria-label='Close' onclick='closeMsg(this)'>" +
+						"<span aria-hidden='true'>&times;</span>" +
+					"</button>" +
+					message +
+				"</div>";
+			return divMessage;
+		}
+
+		function closeMsg(btn){
+			if(!btn.parentNode.className.includes("danger")){
+				$("#mailForm").trigger("reset");
+			}
+			$("#mailForm").removeClass("hidden");
+			$("#formSubmit").removeClass("hidden");
+		}
 	</script>
 
 
@@ -84,12 +106,12 @@
 	<div class="container">
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="#homeSection">Home</a></li>
-				<li><a href="#introSection">Introduction</a></li>
-				<li><a href="#skillsection">Skills</a></li>
-				<li><a href="#experienceSection">Experience</a></li>
-				<li><a href="#educationSection">Education</a></li>
-				<li><a href="#contactSection">Contac me</a></li>
+				<li><a href="#home">Home</a></li>
+				<li><a href="#intro">Introduction</a></li>
+				<li><a href="#skills">Skills</a></li>
+				<li><a href="#experience">Experience</a></li>
+				<li><a href="#education">Education</a></li>
+				<li><a href="#contact">Contac me</a></li>
 			</ul>
 		</div>
 	</div>
@@ -374,11 +396,11 @@
 
 				<div class="form-group">
 					<div class="col-xs-offset-2 col-xs-10">
-						<input id="formSubmit" class="btn btn-default" type="submit" onclick="sendMail(event)" />
+						<input id="formSubmit" class="btn btn-default" type="submit"/>
 					</div>
 				</div>				
 			</form>
-			<div id="formResult" class="alert hidden" role="alert">
+			<div id="formResult">
 			</div>
 			<div id="loading" class="hidden" style="display:block; height: 340px; line-height: 340px; text-align:center;">
 				<img src="images/load.gif" title="loading" alt="loading" height="100" />
