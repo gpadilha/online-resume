@@ -58,35 +58,26 @@ section{
     margin-top: 3em;
     margin-bottom: 3em;
 }
-.contactBackground{
-	background-image: url(../images/bg2.jpg);	
-	background-size: auto;
-    background-attachment: fixed;
-    background-position: bottom;
-    background-repeat: no-repeat;
-	z-index: -1;
-    -webkit-transition: opacity .4s;
-    -o-transition: opacity .4s;
-    transition: opacity .4s;
-    display: block;
-    height: 430px;
-    width: 100%;
-    position: absolute;
-    left:0;
-}
+
 #contact{
     margin-bottom: 0;
     min-height: 430px;
 }
-#contact h1, #contact form, #contact legend{
-    color: #fff;
-}
+
 #loading{
-    display: block; 
+    display: none; 
     height: 340px; 
     line-height: 340px; 
     text-align: center;
 }
+#alert{
+    display: none;
+}
+.form-group.required .control-label:after { 
+   content:"*";
+   color:red;
+}
+
 .footer{
 	width: 100%;
     height: 50px;
@@ -99,4 +90,34 @@ footer p{
 }
 div.socialIcons a{
 	text-decoration: none;
+}
+
+@media(min-width: 992px) {
+    .contactBackground{
+        background-image: url(../images/bgContact.jpg); 
+        background-size: auto;
+        background-attachment: fixed;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        z-index: -1;
+        -webkit-transition: opacity .4s;
+        -o-transition: opacity .4s;
+        transition: opacity .4s;
+        display: block;
+        height: 430px;
+        width: 100%;
+        position: absolute;
+        left:0;
+    }
+    #contact h1, #contact form, #contact legend{
+        color: #fff;
+    }
+}
+@media(max-width: 768px) {
+    .contactBackground{
+        background-image: none; 
+    }
+    #mailForm{
+        margin-top: 2em;
+    }
 }

@@ -7,38 +7,42 @@
 	<title>Guilherme Maia</title>
 	
 	
-	<!-- <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.min.css" /> -->
+	<!-- Style Sheets -->
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-<!-- 	<link rel="stylesheet" type="text/css" href="css/reset.css" /> -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<link href="https://fonts.googleapis.com/css?family=Russo+One|Trirong" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<link rel="stylesheet" type="text/css" href="css/tablet.css" />
+	<link rel="stylesheet" type="text/css" href="css/smartphone.css" />
 	
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-	<!-- fullpageJS -->
-<!-- 
-	<script type="text/javascript" src="js/scrolloverflow.min.js"></script>
-	<script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
-	 -->
-
 	<!-- Bootstrap -->
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>	
+
+	<!-- LinkedIn Badge -->
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+
+	<!-- My Scritpt -->
 	<script type="text/javascript">
 
 		$(function(){
-			$("#formSubmit").click(function(btn){
+			$("#mailForm").submit(function(btn){
 				btn.preventDefault();
 				$.ajax({type: 'POST',
-						url: 'http://myciccc.ca/process_form.php', 
+						url: 'mail_sender.php', 
 						data: $("#mailForm").serialize(),
 						success: function(message, result, jqXHR){
-							$("#formResult").html(getDivMessage(message, "info"));
-							$("#formSubmit").addClass("hidden");
-							$("#loading").addClass("hidden");
+
+							var ret = JSON.parse(message);
+							var msgType;
+							msgType = ret['success'] ? 'success' : 'danger';
+
+							$("#formResult").html(getDivMessage(ret['message'], msgType));
+							$("#loading").fadeOut(1);
+							$("#alert").fadeIn();
 						}			
 				});
 			});			
@@ -46,13 +50,13 @@
 
 		$(document).ajaxError(function(){
 			$("#formResult").html(getDivMessage("Failed to send your requisition", "danger"));
-			$("#formSubmit").addClass("hidden");
-			$("#loading").addClass("hidden");
+			$("#loading").fadeOut(1);
+			$("#alert").fadeIn();
 		});
 
 		$(document).ajaxSend(function(){
-			$("#mailForm").addClass("hidden");
-			$("#loading").removeClass("hidden");
+			$("#mailForm").fadeOut(1);
+			$("#loading").fadeIn();
 		});	
 
 
@@ -61,7 +65,7 @@
 				type = info;
 			}
 			var divMessage = 
-				 "<div class='alert alert-dismissible alert-"+type+"' role='alert'>" +
+				 "<div id='alert' class='alert alert-dismissible alert-"+type+"' role='alert'>" +
 					"<button type='button' class='close' data-dismiss='alert' aria-label='Close' onclick='closeMsg(this)'>" +
 						"<span aria-hidden='true'>&times;</span>" +
 					"</button>" +
@@ -74,8 +78,7 @@
 			if(!btn.parentNode.className.includes("danger")){
 				$("#mailForm").trigger("reset");
 			}
-			$("#mailForm").removeClass("hidden");
-			$("#formSubmit").removeClass("hidden");
+			$("#mailForm").fadeIn();
 		}
 
 		
@@ -87,27 +90,7 @@
 
 		$(window).bind("hashchange", offsetAnchor);
 	</script>
-
-
-<!-- 
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#fullpage').fullpage({
-				//verticalCentered: false,
-				anchors: ['homeSection', 'introSection', 'skillsSection', 'experienceSection', 'educationSection', 'contactSection'],
-				scrollOverflow: true
-
-				//to avoid problems with css3 transforms and fixed elements in Chrome, as detailed here: https://github.com/alvarotrigo/fullPage.js/issues/208
-				//css3:false
-			});
-		});
-
-	</script>
- -->	
 	
-	<!-- LinkedIn Badge -->
-	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-
 </head>
 <body>
 
@@ -152,91 +135,91 @@
 		<h1><span class="glyphicon glyphicon-tasks"></span> Skills</h1>
 
 		<div class="row">
-			<label class="col-md-1 col-md-offset-1">Java</label>
-			<div class="col-md-8">
+			<label class="col-md-1 col-xs-2 col-md-offset-1">Java</label>
+			<div class="col-md-8 col-xs-6">
 				<div class="progress">
 					<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
 				  	</div>
 				</div>
 			</div>
-			<label class="col-md-1 text-right">Expert</label>
+			<label class="col-md-1 col-xs-2 text-right">Expert</label>
 		</div>
 		
 		<div class="row">
-			<label class="col-md-1 col-md-offset-1">PHP</label>
-			<div class="col-md-8">
+			<label class="col-md-1 col-xs-2 col-md-offset-1">PHP</label>
+			<div class="col-md-8 col-xs-6">
 				<div class="progress">
 					<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
 				  	</div>
 				</div>
 			</div>
-			<label class="col-md-1 text-right">Advanced</label>
+			<label class="col-md-1 col-xs-2 text-right">Advanced</label>
 		</div>
 
 		<div class="row">
-			<label class="col-md-1 col-md-offset-1">ABAP</label>
-			<div class="col-md-8">
+			<label class="col-md-1 col-xs-2 col-md-offset-1">ABAP</label>
+			<div class="col-md-8 col-xs-6">
 				<div class="progress">
 					<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
 				  	</div>
 				</div>  	
 			</div>
-			<label class="col-md-1 text-right">Advanced</label>
+			<label class="col-md-1 col-xs-2 text-right">Advanced</label>
 		</div>
 
 		<div class="row">
-			<label class="col-md-1 col-md-offset-1">HTML5</label>
-			<div class="col-md-8">
+			<label class="col-md-1 col-xs-2 col-md-offset-1">HTML5</label>
+			<div class="col-md-8 col-xs-6">
 				<div class="progress">
 					<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">			    
 				  	</div>
 				</div>
 			</div>
-			<label class="col-md-1 text-right">Expert</label>
+			<label class="col-md-1 col-xs-2 text-right">Expert</label>
 		</div>
 
 		<div class="row">
-			<label class="col-md-1 col-md-offset-1">CSS3</label>
-			<div class="col-md-8">
+			<label class="col-md-1 col-xs-2 col-md-offset-1">CSS3</label>
+			<div class="col-md-8 col-xs-6">
 				<div class="progress">
 					<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">			    
 				  	</div>
 				</div>
 			</div>
-			<label class="col-md-1 text-right">Expert</label>
+			<label class="col-md-1 col-xs-2 text-right">Expert</label>
 		</div>
 
 		<div class="row">
-			<label class="col-md-1 col-md-offset-1">JavaScript</label>
-			<div class="col-md-8">
+			<label class="col-md-1 col-xs-2 col-md-offset-1">JavaScript</label>
+			<div class="col-md-8 col-xs-6">
 				<div class="progress">
 					<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%">			    
 				  	</div>
 			  	</div>
 			</div>
-			<label class="col-md-1 text-right">Advanced</label>
+			<label class="col-md-1 col-xs-2 text-right">Advanced</label>
 		</div>
 
 		<div class="row">
-			<label class="col-md-1 col-md-offset-1">PL/SQL</label>
-			<div class="col-md-8">
+			<label class="col-md-1 col-xs-2 col-md-offset-1">PL/SQL</label>
+			<div class="col-md-8 col-xs-6">
 				<div class="progress">
 					<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">			    
 				  	</div>
 				</div>
 			</div>
-			<label class="col-md-1 text-right">Intermediate</label> <br />
+			<label class="col-md-1 col-xs-2 text-right">Intermediate</label> <br />
 		</div>
 
 		<div class="row">
-			<label class="col-md-1 col-md-offset-1">MySQL</label>
-			<div class="col-md-8">
+			<label class="col-md-1 col-xs-2 col-md-offset-1">MySQL</label>
+			<div class="col-md-8 col-xs-6">
 				<div class="progress">
 					<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%">			    
 				  	</div>
 			  	</div>
 			</div>
-			<label class="col-md-1 text-right">Intermediate</label> <br />
+			<label class="col-md-1 col-xs-2 text-right">Intermediate</label> <br />
 		</div>
 	</section>
 
@@ -341,23 +324,36 @@
 
 		<h3>Cornerstone International Community College of Canada</h3>
 		<p>
-			<span class="glyphicon glyphicon-arrow-right"></span>	Web and Mobile Development Diploma (CO-OP).</p><p> 
-			<span class="glyphicon glyphicon-arrow-right"></span>	Basic knowledge about design, colours, typography, Photoshop and Illustrator.</p><p>
-			<span class="glyphicon glyphicon-arrow-right"></span>	Software engineering, HTML5, CSS3, JavaScript, jQuery, AJAX, Java.
-
+			<span class="glyphicon glyphicon-arrow-right"></span>
+			Web and Mobile Development Diploma (CO-OP).
+		</p>
+		<p> 
+			<span class="glyphicon glyphicon-arrow-right"></span>
+			Basic knowledge about design, colours, typography, Photoshop and Illustrator.
+		</p>
+		<p>
+			<span class="glyphicon glyphicon-arrow-right"></span>
+			Software engineering, HTML5, CSS3, JavaScript, jQuery, AJAX, Java.
 		</p>
 
 		<h3>PUC Minas</h3>
 		<p>
-			<span class="glyphicon glyphicon-arrow-right"></span>	Bachelor Degree at Information Systems (Information Technology).</p><p>
-			<span class="glyphicon glyphicon-arrow-right"></span>	This course include subjects related to systems development such as logic, project management, analyze of requirements, web development, development patterns, good developments practices, algorithms and data structure.
-
+			<span class="glyphicon glyphicon-arrow-right"></span>
+			Bachelor Degree at Information Systems (Information Technology).
+		</p>
+		<p>
+			<span class="glyphicon glyphicon-arrow-right"></span>
+			This course include subjects related to systems development such as logic, project management, analyze of requirements, web development, development patterns, good developments practices, algorithms and data structure.
 		</p>
 
 		<h3>COTEMIG</h3>
 		<p>
-			<span class="glyphicon glyphicon-arrow-right"></span>	General Informatics Technical Diploma.</p><p>
-			<span class="glyphicon glyphicon-arrow-right"></span>	This course teaches about computer hardware, programing logic, algorithms and programing languages such as: Pascal, Delphi, PHP, JavaScript, CSS and HTML.
+			<span class="glyphicon glyphicon-arrow-right"></span>
+			General Informatics Technical Diploma.
+		</p>
+		<p>
+			<span class="glyphicon glyphicon-arrow-right"></span>
+			This course teaches about computer hardware, programing logic, algorithms and programing languages such as: Pascal, Delphi, PHP, JavaScript, CSS and HTML.
 		</p>
 	</section>
 
@@ -366,40 +362,40 @@
 		<div class="container-fluid contactBackground"></div>
 		<h1><span class="glyphicon glyphicon-envelope"></span> Contact me</h1>
 
-		<div class="col-md-3 text-center col-md-offset-1">
+		<div class="col-md-3 col-md-offset-1 col-xs-12  text-center">
 			<div class="LI-profile-badge" data-version="v1" data-size="small" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="guilhermepmaia">
 				<a class="LI-simple-link" href='https://ca.linkedin.com/in/guilhermepmaia?trk=profile-badge'>Guilherme Maia</a>
 			</div>
 		</div>
 
-		<div class="col-md-6 col-md-offset-1">
+		<div class="col-md-6 col-md-offset-1 col-xs-12">
 			<form id="mailForm" class="form-horizontal">
 				<legend>Let's get in touch</legend>
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-xs-2 control-label" for="name">Name</label>
 					<div class="col-xs-10">
-						<input class="form-control" id="name" type="text" name="name" placeholder="Name" />
+						<input class="form-control" id="name" type="text" name="name" placeholder="Name" required/>
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group required">
 					<label class="col-xs-2 control-label" for="email">Email</label>
 					<div class="col-xs-10">
-						<input class="form-control" id="email" type="email" name="email" placeholder="Email" />
+						<input class="form-control" id="email" type="email" name="email" placeholder="Email" required/>
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label class="col-xs-2 control-label"  for="subject">Subject</label>
+				<div class="form-group required">
+					<label class="col-xs-2 control-label" for="subject">Subject</label>
 					<div class="col-xs-10">
-						<input class="form-control" id="subject" type="text" name="subject" placeholder="Subject" />
+						<input class="form-control" id="subject" type="text" name="subject" placeholder="Subject" required/>
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label class="col-xs-2 control-label"  for="message">Message</label>
+				<div class="form-group required">
+					<label class="col-xs-2 control-label" for="message">Message</label>
 					<div class="col-xs-10">
-						<textarea class="form-control" id="message" name="message" placeholder="Message" rows="4"></textarea>
+						<textarea class="form-control" id="message" name="message" placeholder="Message" rows="4" required></textarea>
 					</div>
 				</div>
 
@@ -409,9 +405,8 @@
 					</div>
 				</div>				
 			</form>
-			<div id="formResult">
-			</div>
-			<div id="loading" class="hidden">
+			<div id="formResult"></div>
+			<div id="loading">
 				<img src="images/load.gif" title="loading" alt="loading" height="100" />
 			</div>
 		</div>
