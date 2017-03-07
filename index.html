@@ -47,7 +47,12 @@
 							$("#alert").fadeIn();
 						}			
 				});
-			});			
+			});	
+
+			$("#mobileMenu > ul > li > a").click(function(e){
+				$("article").click();
+			})
+
 		});	
 
 		$(document).ajaxError(function(){
@@ -96,7 +101,7 @@
 </head>
 <body>
 
-<nav class="navmenu navmenu-inverse navmenu-fixed-left offcanvas" role="navigation" id="menuMobile">
+<nav class="navmenu navmenu-inverse navmenu-fixed-left offcanvas" role="navigation" id="mobileMenu">
 	<ul class="nav navmenu-nav">
 		<li role="presentation"><a href="#home">HOME</a></li>
 		<li role="presentation"><a href="#intro">ABOUT</a></li>
@@ -108,7 +113,7 @@
 </nav>
 
 <div id="mobileNav" class="navbar navbar-inverse navbar-fixed-top">
-  <button class="nav-toggle" data-toggle="offcanvas" data-target="#menuMobile" data-canvas="body">
+  <button class="nav-toggle" data-toggle="offcanvas" data-target="#mobileMenu" data-canvas="body">
     <span class="glyphicon glyphicon-menu-hamburger"></span>
   </button>
 </div>

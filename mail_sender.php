@@ -1,5 +1,6 @@
 <?php 
 
+//just to test loading icon -- remove it
 sleep(1);
 
 if ($_REQUEST["name"] == "" or $_REQUEST["email"] == "" or 
